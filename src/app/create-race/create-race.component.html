@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row pt-3">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="jumbotron p-3">
+                <h2>Create Race:</h2><br>
+                <label>Race Title:</label>
+                <input type="text" class="form-control" placeholder="Title" #race_title><br>
+                <label>Author's Name:</label>
+                <input type="text" class="form-control" placeholder="Author's Name" #race_author><br>
+                <label>Race Data:</label>
+                <textarea class="form-control" cols="30" rows="6" placeholder="Race Data" #race_data></textarea><br>
+                <button class="btn btn-primary btn-block" (click)="save_race(race_title.value,race_author.value,race_data.value)">Submit</button>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div *ngIf="isLoading">
+    <img src="../../assets/images/source.gif" alt="Loading..." height="60" width="60"
+        style="display:block; margin: 10px auto;">
+</div>
+
+<!-- taking the username and email -->
+<div class="container" *ngIf="!user">
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div class="jumbotron p-3 mt-3">
+                <h3>Racer Deatils:</h3><br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Racer Name" class="form-control" #user_name>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="email" placeholder="Racer Email" class="form-control" #user_email>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button class="btn btn-outline-primary"
+                            (click)="save_user(user_name.value,user_email.value)">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="race && user">
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div class="jumbotron p-3 mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="pt-3">{{race.title}}</h3>
+                        <p style="color: darkgray;">Author: {{race.author}}</p>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <p>No of words: <b>{{no_of_words}}</b></p>
+                        <p>Time: {{min}} : {{sec}}.{{msec}}</p>
+                    </div>
+                </div>
+                <p class="text-justify">{{past}} <mark [ngStyle]="{'background-color':get_color()}">{{present}}</mark>
+                    {{future}}</p>
+            </div>
+            <div class="jumbotron p-1">
+                <input type="text" class="form-control" autofocus placeholder="Type Here" (keyup)="on_key_up($event)"
+                    [(ngModel)]="input_text">
+            </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>

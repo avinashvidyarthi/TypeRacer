@@ -1,0 +1,31 @@
+<div *ngIf="isLoading">
+    <img src="../../assets/images/source.gif" alt="Loading..." height="60" width="60"
+        style="display:block; margin: 10px auto;">
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 col-xs-0">
+
+        </div>
+        <div class="col-md-10">
+            <div class="jumbotron p-3 m-2" *ngFor="let one_race of race_arr">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>{{one_race.title}}</h3>
+                        <p style="color: darkgray">Author: {{one_race.author}}</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a [routerLink]="['/race',one_race.id]" class="btn btn-outline-primary">Start
+                            Race</a>&nbsp;&nbsp;&nbsp;
+                        <a [routerLink]="['/race-result',one_race.id]" class="btn btn-outline-warning">Race Result</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 col-xs-0">
+
+        </div>
+    </div>
+</div>
