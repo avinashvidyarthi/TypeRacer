@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import swal from 'sweetalert';
 
+
+
 @Component({
     templateUrl: 'race.component.html'
 })
@@ -54,11 +56,11 @@ export class RaceComponent implements OnInit {
 
     }
     ngOnInit() {
-        swal("Guidelines:", "You have to type each word in the box.\nThe timer will start when you press first key the box.\nAt the end of each word press SPACE");
+        swal("Guidelines:", "You have to type each word in the box.\nThe timer will start when you press first key the box.\nAt the end of each word press SPACE.\nRace in TEST race  to get hands on practice.");
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             this.isLoading = true;
             this.race_id = paramMap.get('race_id');
-            this.http.get<any>('http://localhost:3000/api/get_one_race/' + this.race_id).subscribe((result) => {
+            this.http.get<any>('/api/get_one_race/' + this.race_id).subscribe((result) => {
                 this.isLoading = false;
                 if (result.id) {
                     this.race = result;
@@ -128,6 +130,10 @@ export class RaceComponent implements OnInit {
     }
 
     save_user(user_name, user_email) {
+        if(user_name==="" || user_email===""){
+            swal("Error!!","Invalid User details!!!","error");
+            return;
+        }
         this.user = {
             name: user_name,
             email: user_email

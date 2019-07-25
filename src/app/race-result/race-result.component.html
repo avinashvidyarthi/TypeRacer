@@ -14,22 +14,24 @@
                 <p style="color: darkgray">Author: {{race_data.race_data.author}}</p>
                 <p>No of words: <b>{{race_data.race_data.no_of_words}}</b></p>
                 <br>
-                <table class="table-bordered" width=100%>
-                    <tr>
-                        <th>Sl No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Raced At</th>
-                        <th>Time Taken</th>
-                    </tr>
-                    <tr *ngFor="let one_result of race_data.race_result; let i=index">
-                        <td>{{i+1}}</td>
-                        <td>{{one_result.name}}</td>
-                        <td>{{one_result.email}}</td>
-                        <td>{{one_result.race_time}}</td>
-                        <td>{{one_result.min}} Min, {{one_result.sec}}.{{one_result.msec}} Sec</td>
-                    </tr>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered" width=100%>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Raced At</th>
+                            <th>Time Taken</th>
+                        </tr>
+                        <tr *ngFor="let one_result of race_data.race_result; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{one_result.name}}</td>
+                            <td>{{one_result.email}}</td>
+                            <td>{{one_result.race_time}}</td>
+                            <td>{{one_result.min}} Min, {{one_result.sec}}.{{one_result.msec}} Sec</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-1">
