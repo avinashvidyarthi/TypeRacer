@@ -1,9 +1,0 @@
-    
-{
-    "name": "TypeRacer",
-    "description": "TypeRacer by Avinash",
-    "repository": "https://github.com/avinashvidyarthi/quiz",
-    "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
-    "keywords": ["typing", "race"],
-    "image": "./image/glyphy.png"
-  }

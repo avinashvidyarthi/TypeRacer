@@ -19,7 +19,7 @@ export class RaceResultComponent implements OnInit{
         this.isLoading=true;
         this.route.paramMap.subscribe((paramMap:ParamMap)=>{
             this.race_id=paramMap.get('race_id');
-            this.http.get("/api/get_one_result/"+this.race_id).subscribe((result)=>{
+            this.http.get("http://localhost:3000/api/get_one_result/"+this.race_id).subscribe((result)=>{
                 this.isLoading=false;
                 this.isLoaded=true;
                 this.race_data=result;

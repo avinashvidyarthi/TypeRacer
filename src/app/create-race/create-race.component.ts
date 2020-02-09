@@ -31,7 +31,9 @@ export class CreateRaceComponent {
             data: race_data
         };
 
-        this.http.post<any>("/api/post_race", this.race).subscribe((result) => {
+        var ul="http://localhost:3000/api/post_race/?title="+this.race.title+"&author="+this.race.author+"&data="+this.race.data;
+
+        this.http.get<any>(ul).subscribe((result) => {
             if (result.msg === "done") {
                 swal("Success!!!", "Race data has been saved to server!!", "success");
             }

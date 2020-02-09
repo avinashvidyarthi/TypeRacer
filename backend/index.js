@@ -33,10 +33,11 @@ app.use("/",express.static(path.join(__dirname,"public")));
 
 //mysql connection
 const conn=mysql.createConnection({
-    host:'remotemysql.com',
-    user:'k9l7Y7sgYJ',
-    database:'k9l7Y7sgYJ',
-    password:'DHFKYZTm4s'
+    host:'db4free.net',
+    port:3306,
+    user:'avinashvidyarthi',
+    database:'typeracer',
+    password:'Avinash@1996'
 });
 
 conn.connect((err)=>{
@@ -49,8 +50,9 @@ conn.connect((err)=>{
 
 
 //api to post race data
-app.post('/api/post_race',(req,res,next)=>{
-    conn.query("Insert into races(title,author,race_data) values(?,?,?)",[req.body.title,req.body.author,req.body.data],(err,result)=>{
+app.get('/api/post_race',(req,res,next)=>{
+    //console.log("post race");
+    conn.query("Insert into races(title,author,race_data) values(?,?,?)",[req.query.title,req.query.author,req.query.data],(err,result)=>{
         if(err){
             return res.status(200).json({msg:'err'});
         }
@@ -93,15 +95,15 @@ app.get('/api/get_one_race/:race_id',(req,res,next)=>{
     });
 });
 
-//api to post the result to database
-app.post('/api/post_result',(req,res,next)=>{
+//api to post result to db
+app.get("/api/post_result",(req,res)=>{
     conn.query('insert into results(name,email,race_id,min,sec,msec) values(?,?,?,?,?,?)',[
-        req.body.name,
-        req.body.email,
-        req.body.race_id,
-        req.body.min,
-        req.body.sec,
-        req.body.msec
+        req.query.name,
+        req.query.email,
+        req.query.race_id,
+        req.query.min,
+        req.query.sec,
+        req.query.msec
     ],(err,result)=>{
         if(err){
             return res.status(200).json({msg:'err',err:err});
@@ -109,8 +111,10 @@ app.post('/api/post_result',(req,res,next)=>{
         else{
             return res.status(200).json({msg:'success'});
         }
-    });
+    })
 });
+
+
 
 //api to get the result of one race
 app.get('/api/get_one_result/:race_id',(req,res,next)=>{
@@ -138,7 +142,7 @@ app.get('/api/get_one_result/:race_id',(req,res,next)=>{
 
 //sending the static file
 app.use((req,res,next)=>{
-    res.sendFile(path.join(__dirname,"public","index.html"));
+    //res.sendFile(path.join(__dirname,"public","index.html"));
 });
 
 //listening to the port
