@@ -60,7 +60,7 @@ export class RaceComponent implements OnInit {
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             this.isLoading = true;
             this.race_id = paramMap.get('race_id');
-            this.http.get<any>('http://localhost:3000/api/get_one_race/' + this.race_id).subscribe((result) => {
+            this.http.get<any>('/api/get_one_race/' + this.race_id).subscribe((result) => {
                 this.isLoading = false;
                 if (result.id) {
                     this.race = result;
@@ -95,7 +95,7 @@ export class RaceComponent implements OnInit {
                 clearInterval(this.timer);
                 swal("Great!!", "You completed this race in " + this.min + " min, " + this.sec + "." + this.msec + " sec!!!\nYour data is being sent to the server!!!", "success");
                 //sending result to server
-                var ur="http://localhost:3000/api/post_result/?name="+this.user.name+"&email="+this.user.email;
+                var ur="/api/post_result/?name="+this.user.name+"&email="+this.user.email;
                 ur+="&race_id="+this.race_id+"&min="+this.min+"&sec="+this.sec+"&msec="+this.msec;
                 //console.log(ur);
                 this.http.get<any>(ur).subscribe(result=>{

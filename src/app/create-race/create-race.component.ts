@@ -31,7 +31,7 @@ export class CreateRaceComponent {
             data: race_data
         };
 
-        var ul="http://localhost:3000/api/post_race/?title="+this.race.title+"&author="+this.race.author+"&data="+this.race.data;
+        var ul="/api/post_race/?title="+this.race.title+"&author="+this.race.author+"&data="+this.race.data;
 
         this.http.get<any>(ul).subscribe((result) => {
             if (result.msg === "done") {

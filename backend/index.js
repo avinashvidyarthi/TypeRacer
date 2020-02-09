@@ -142,7 +142,7 @@ app.get('/api/get_one_result/:race_id',(req,res,next)=>{
 
 //sending the static file
 app.use((req,res,next)=>{
-    //res.sendFile(path.join(__dirname,"public","index.html"));
+    res.sendFile(path.join(__dirname,"public","index.html"));
 });
 
 //listening to the port
