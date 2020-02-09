@@ -100,7 +100,7 @@ export class RaceComponent implements OnInit {
                 //console.log(ur);
                 this.http.get<any>(ur).subscribe(result=>{
                     if(result.msg==="success"){
-                        this.router.navigate(['/']);
+                        this.router.navigate(['/race-result/'+this.race_id]);
                     }
                     else{
                         swal("Try Again!!","Something went wrong!","error");
